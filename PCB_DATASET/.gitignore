@@ -1,0 +1,4 @@
+# 数据集仅本地存放，不纳入 Git（说明见 README.md）
+*
+!.gitignore
+!README.md
