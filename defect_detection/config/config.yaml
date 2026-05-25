@@ -1,0 +1,68 @@
+﻿# ============================================================
+# PCB 缺陷检测系统 - 配置文件
+# ============================================================
+
+# 相机配置
+camera:
+  device_id: 0                # USB 相机设备号 (视频模式无效)
+  video_path: ""              # 视频文件路径 (如 data/pipeline_simulation.mp4)
+  loop_video: true            # 视频是否循环播放
+  width: 640                  # 采集宽度（相机硬件上限）
+  height: 480                 # 采集高度
+  fps: 30                     # 目标帧率
+  exposure: -1                # 曝光时间 (μs)，-1=自动，=0=手动
+  gain: -1                    # 增益 (dB)，-1=自动，=0=手动
+  backend: "AutoDetect"       # 视频后端: AutoDetect / DShow / MSMF / VFW / OpenCV
+  timeout_ms: 3000            # 帧读取超时 (毫秒)
+  retry_count: 3              # 自动重连前的连续丢帧阈值
+  auto_reconnect: true        # 丢帧后是否自动重连
+  roi_x: 0                    # ROI 左上角 X (0=全图)
+  roi_y: 0                    # ROI 左上角 Y
+  roi_w: 0                    # ROI 宽度 (0=全图)
+  roi_h: 0                    # ROI 高度 (0=全图)
+
+# 模型配置
+model:
+  path: "models/model.onnx"   # ONNX 模型文件路径
+  use_gpu: true              # 是否启用 GPU 推理
+  gpu_device_id: 0            # CUDA 设备号
+
+# 检测参数
+detection:
+  confidence_threshold: 0.6   # 置信度阈值，低于此值的检测框被过滤
+  nms_threshold: 0.45         # NMS 的 IoU 阈值
+  num_classes: 6              # 缺陷类别数量
+  class_names:                # 类别名称列表（与训练集 CLASSES 一致）
+    - "missing_hole"          # 孔洞缺失
+    - "mouse_bite"            # 鼠咬
+    - "open_circuit"          # 开路
+    - "short"                 # 短路
+    - "spur"                  # 毛刺
+    - "spurious_copper"       # 多余铜箔/铜渣
+
+# 串口通信配置 (RS232/485)
+serial:
+  port: "COM6"                # 串口号 (com0com 虚拟串口)
+  baudrate: 9600              # 波特率
+  data_bits: 8                # 数据位 (5/6/7/8)
+  parity: "N"                 # 校验位: N=无, E=偶校验, O=奇校验
+  stop_bits: 1                # 停止位 (1/2)
+
+# 显示界面
+ui:
+  window_width: 1280          # 显示窗口宽度
+  window_height: 720          # 显示窗口高度
+  show_fps: true              # 是否显示帧率
+
+# 日志配置
+logging:
+  level: "info"               # 日志级别: debug / info / warn / error / fatal
+  file: "logs/defect_detection.log"
+  max_size_mb: 10             # 单个日志文件最大大小
+  max_files: 5                # 保留的日志文件数
+
+# 统计报表
+statistics:
+  export_path: "logs/stats"   # 报表导出路径
+  auto_export: true           # 是否自动导出
+  export_interval_min: 60     # 自动导出间隔（分钟）

@@ -1,0 +1,61 @@
+PCB Defect Detection System — 软件许可协议
+============================================
+
+Copyright (c) 2026 PCB Defect Detection System contributors
+
+一、许可范围（非商业）
+
+在遵守本协议及下文「第三方组件义务」的前提下，授予您免费、非独占的权利，以
+**非商业目的**使用、复制、修改本仓库中由贡献者享有著作权的源代码与文档，包括：
+
+  • 个人学习、科研、课程作业、毕业设计、技术评测
+  • 非营利的开源贡献、内部技术演示（不对外销售产品或服务）
+
+**禁止**在未取得著作权人书面授权的情况下，将本仓库（或其修改版）用于任何
+**商业目的**，包括但不限于：产品销售、收费部署、产线交付、SaaS/API 营利、
+招投标交付物等。
+
+二、第三方组件义务（必读）
+
+本系统依赖多种第三方软件；**其许可独立于本协议**，不受本协议「非商业」条款
+的放宽。您必须自行阅读并遵守各组件许可证，尤其：
+
+  1. **YOLOv5（训练 / 导出 / 评估）**
+     本项目的模型训练、验证、ONNX 导出脚本依赖仓库内或外部的 **YOLOv5**
+    （本工作区常见路径：`yolov5-7.0/`）。
+     • YOLOv5 v7.0 采用 **GNU General Public License v3.0 (GPL-3.0)**。
+     • 完整许可证文本见：`yolov5-7.0/LICENSE` 或
+       https://www.gnu.org/licenses/gpl-3.0.html
+     • Ultralytics 对**商业使用**另有要求；商业场景须遵循其官方政策并可能需要
+       单独商业授权：https://ultralytics.com/license
+     • 使用 `train.py` / `export.py` / 基于 YOLOv5 导出的权重或 ONNX 时，
+       您须满足 GPL-3.0 的相关义务（如再分发时的源码/许可告知等）。
+
+  2. **其他运行时与工具依赖**
+     详见 `docs/THIRD_PARTY_LICENSES.md`（ONNX Runtime、OpenCV、Qt、
+     yaml-cpp、Python 生态等）。
+
+**本仓库的非商业许可并不免除您对 YOLOv5 及其他第三方许可证的遵守义务。**
+若第三方许可与您拟定的使用方式冲突，以**更严格**的条款为准。
+
+三、数据集
+
+`PCB_DATASET` 等数据集的著作权与使用范围由数据集提供方决定；本许可**不**授予
+数据集本身的任何权利。使用前请确认数据集许可是否允许您的用途。
+
+四、免责声明
+
+本软件按「原样」提供，不提供任何明示或默示担保。作者与贡献者对因使用本软件
+造成的任何直接或间接损失不承担责任。
+
+五、联系方式
+
+如需商业授权或澄清许可范围，请通过本仓库 Issue 或维护者指定渠道联系著作权人。
+
+---
+English summary (non-binding; Chinese text prevails):
+
+  • This project’s own code/docs: **non-commercial use only** unless you obtain
+    written permission from the copyright holders.
+  • **YOLOv5** (training/export path): **GPL-3.0**; commercial use may require
+    a separate Ultralytics license. See `docs/THIRD_PARTY_LICENSES.md`.

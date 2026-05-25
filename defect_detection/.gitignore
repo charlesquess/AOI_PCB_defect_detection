@@ -1,0 +1,46 @@
+# Build
+build/
+build_qt/
+cmake-build-*/
+*.o
+*.obj
+*.exe
+*.lib
+*.dll
+*.so
+*.dylib
+*.pdb
+*.ilk
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data
+data/
+
+# Logs & Reports
+logs/
+!logs/.gitkeep
+
+# Models (runtime generated)
+models/*.onnx
+models/*.pt
+models/*.engine
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# 3rdparty archives
+*.zip
+*.bak
+3rdparty/onnxruntime.bak/
